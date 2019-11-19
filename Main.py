@@ -3,7 +3,7 @@
 
 
 def question(questionText, questionAnswer):
-    x = raw_input(questionText)
+    x = input(questionText)
     if x == questionAnswer:
         return 1
     else:
