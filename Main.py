@@ -1,39 +1,67 @@
-# Christopher Bryan
-# This is my trivia game.
+"""This is the main file for this program, my trivia game.
+__author__ = "Christopher" """
 
-def question(questionText, questionAnswer):
-    answerValid = False
-    while answerValid == False:
-        print(questionText)
-        x = input("Your answer (upper or lower case A, B, C, or D): ").capitalize()
-        if x == questionAnswer:
-            return 1
-            answerValid = True
-        elif x == "A" or x == "B" or x == "C" or x == "D":
-            return 0
-            answerValid = True
+
+def question(question_text, question_answer):
+    """ This function both asks the user the trivia question, and checks
+    whether they got it correct. If they improperly formatted their answer, it
+    tells them and has them try the question again.
+    :param question_text:
+    :param question_answer:
+    :return: """
+    input_is_not_valid = True
+    score = 0
+    while input_is_not_valid:
+        print(question_text)
+        user_input = input("Your answer (upper or lower case A, B, C, or D):"
+                           " ").capitalize()
+        if user_input == question_answer:
+            score = 1
+            input_is_not_valid = False
+        elif user_input == "A" or user_input == "B" or user_input == "C"\
+                or user_input == "D":
+            score = 0
+            input_is_not_valid = False
         else:
-            print("Your answer is either not a letter or an invalid one, try again.")
+            print("Your answer is either not a letter or not A, B, C, or D,"
+                  " try again.")
+    return score
+
 
 def main():
-    yourName = input("Enter your name: ")
-    print('Welcome to my trivia game,', yourName + '! Be prepared to be challenged!')
+    """ This is the main function of the program. It asks the user their name,
+    greets them by name, stores all of the questions to ask the user alongside
+    their answers, runs the question function, stores the number of questions
+    asked and correct answers received, and tells the user the fraction of the
+    total questions asked of them they got right.
+    :return: No values are returned.
+    """
+    your_name = input("Enter your name: ")
+    print('Welcome to my trivia game,',
+          your_name + '! Be prepared to be challenged!')
 
-    correctTotal = 0
-    totalDone = 0
+    correct_total = 0
+    total_done = 0
 
-    questionList = ['The Statue of Liberty was given to the US by: (A. Britain   B. Spain   C. Canada   D.France) ',
-                    'How many have athletes have died in the modern olympics: (A. 5   B. 10   C. 30   D. 15) ',
-                    'Which desert is largest: (A. Antarctica   B. Sahara   C. Gobi   D. Great Victoria) ',
-                    'How many sides does a Toblerone have: (A. 23   B. 38   C. 41   D. 5) ',
-                    'Which of these is not a berry: (A. Blueberry   B. Strawberry   C. Eggplant   D. Banana) ']
+    question_list = ['The Statue of Liberty was given to the US by: '
+                     '(A. Britain   B. Spain   C. Canada   D.France) ',
+                     'How many have athletes have died in the modern olympics:'
+                     ' (A. 5   B. 10   C. 30   D. 15) ',
+                     'Which desert is largest: (A. Antarctica   B. Sahara   '
+                     'C. Gobi   D. Great Victoria) ',
+                     'How many sides does a Toblerone have: (A. 23   B. 38   '
+                     'C. 41   D. 5) ',
+                     'Which of these is not a berry: (A. Blueberry   '
+                     'B. Strawberry   C. Eggplant   D. Banana) ']
 
-    answerList = ['D', 'B', 'A', 'B', 'B']
+    answer_list = ['D', 'B', 'A', 'B', 'B']
 
-    while totalDone < 5:
-        correctTotal += question(questionList[totalDone], answerList[totalDone])
-        totalDone += 1
+    while total_done < 5:
+        correct_total += question(question_list[total_done],
+                                  answer_list[total_done])
+        total_done += 1
 
-    print(yourName + "'s score: ", correctTotal, '/', totalDone)
+    print(your_name + "'s score: ", correct_total, '/', total_done)
+
 
 main()
