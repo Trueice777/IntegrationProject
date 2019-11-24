@@ -1,14 +1,14 @@
-"""This is the main file for this program, my trivia game.
-__author__ = "Christopher" """
+""" This is the main file for this program, my trivia game.
+__author__ = "Christopher Bryan" """
 
 
 def question(question_text, question_answer):
     """ This function both asks the user the trivia question, and checks
     whether they got it correct. If they improperly formatted their answer, it
     tells them and has them try the question again.
-    :param question_text:
-    :param question_answer:
-    :return: """
+    :param question_text: This is the text of the question that will be asked.
+    :param question_answer: This is the answer to said question.
+    :return: This function returns whether the answer is correct or not. """
     input_is_not_valid = True
     score = 0
     while input_is_not_valid:
@@ -32,8 +32,8 @@ def main():
     """ This is the main function of the program. It asks the user their name,
     greets them by name, stores all of the questions to ask the user alongside
     their answers, runs the question function, stores the number of questions
-    asked and correct answers received, and tells the user the fraction of the
-    total questions asked of them they got right.
+    asked and correct answers received, and tells the user the how many
+    questions they got right out of the total asked of them.
     :return: No values are returned.
     """
     your_name = input("Enter your name: ")
